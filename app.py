@@ -76,7 +76,10 @@ def base_ydl_options() -> dict[str, Any]:
     }
     if POT_PROVIDER_HOME:
         options["extractor_args"] = {
-            "youtube": {"player_client": ["mweb"]},
+            "youtube": {
+                "player_client": ["mweb"],
+                "player_skip": ["webpage"],
+            },
             "youtubepot-bgutilscript": {"server_home": [POT_PROVIDER_HOME]},
         }
     return options
