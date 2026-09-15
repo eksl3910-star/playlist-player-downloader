@@ -21,6 +21,7 @@ from pydantic import BaseModel, Field
 
 APP_ORIGIN = os.getenv("APP_ORIGIN", "https://playlist-player-32p.pages.dev").rstrip("/")
 WORK_ROOT = Path(os.getenv("DOWNLOAD_TMP_DIR", "/tmp/playlist-player-downloads"))
+POT_PROVIDER_HOME = os.getenv("POT_PROVIDER_HOME", "").strip()
 MAX_DURATION_SECONDS = 2 * 60 * 60
 MAX_FILE_BYTES = 1_500_000_000
 JOB_TTL_SECONDS = 30 * 60
@@ -63,15 +64,22 @@ def youtube_url(video_id: str) -> str:
 
 
 def base_ydl_options() -> dict[str, Any]:
-    return {
+    options: dict[str, Any] = {
         "quiet": True,
         "no_warnings": True,
         "noplaylist": True,
+        "source_address": "0.0.0.0",
         "socket_timeout": 30,
         "retries": 2,
         "fragment_retries": 2,
         "concurrent_fragment_downloads": 2,
     }
+    if POT_PROVIDER_HOME:
+        options["extractor_args"] = {
+            "youtube": {"player_client": ["mweb"]},
+            "youtubepot-bgutilscript": {"server_home": [POT_PROVIDER_HOME]},
+        }
+    return options
 
 
 def public_error(error: Exception) -> str:

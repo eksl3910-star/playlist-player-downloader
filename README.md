@@ -6,6 +6,7 @@
 - 오디오: MP3 또는 M4A, 192kbps
 - 영상 2시간, 결과 파일 1.5GB 제한
 - IP당 시간당 3개 작업, 서버 전체 동시 처리 1개
+- 데이터센터 IP의 익명 추출을 위한 `mweb`용 BgUtils PO Token provider
 - 완료 파일은 30분 후 자동 삭제
 
 ## Render 배포
