@@ -78,7 +78,7 @@ def base_ydl_options() -> dict[str, Any]:
         options["extractor_args"] = {
             "youtube": {
                 "player_client": ["mweb"],
-                "player_skip": ["webpage"],
+                "player_skip": ["webpage", "initial_data"],
             },
             "youtubepot-bgutilscript": {"server_home": [POT_PROVIDER_HOME]},
         }
