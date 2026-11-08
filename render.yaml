@@ -8,4 +8,4 @@ services:
     autoDeployTrigger: commit
     envVars:
       - key: APP_ORIGIN
-        value: https://playlist-player-32p.pages.dev
+        value: https://link-hub.kr

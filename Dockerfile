@@ -3,7 +3,7 @@ FROM python:3.13-slim
 ARG DENO_VERSION=2.9.6
 ARG NODE_VERSION=22.23.2
 ARG NODE_SHA256=d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307
-ARG BGUTIL_VERSION=2.0.0
+ARG BGUTIL_VERSION=2.0.2
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg git unzip xz-utils \

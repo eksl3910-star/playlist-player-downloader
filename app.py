@@ -19,7 +19,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 
-APP_ORIGIN = os.getenv("APP_ORIGIN", "https://playlist-player-32p.pages.dev").rstrip("/")
+APP_ORIGIN = os.getenv("APP_ORIGIN", "https://link-hub.kr").rstrip("/")
 WORK_ROOT = Path(os.getenv("DOWNLOAD_TMP_DIR", "/tmp/playlist-player-downloads"))
 POT_PROVIDER_HOME = os.getenv("POT_PROVIDER_HOME", "").strip()
 MAX_DURATION_SECONDS = 2 * 60 * 60
@@ -77,7 +77,7 @@ def base_ydl_options() -> dict[str, Any]:
     if POT_PROVIDER_HOME:
         options["extractor_args"] = {
             "youtube": {
-                "player_client": ["mweb"],
+                "player_client": ["mweb", "tv", "web_safari"],
                 "player_skip": ["webpage", "initial_data"],
             },
             "youtubepot-bgutilscript": {"server_home": [POT_PROVIDER_HOME]},
