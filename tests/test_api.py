@@ -48,7 +48,7 @@ class DownloadApiTest(unittest.TestCase):
         }
         with patch.object(service, "extract_info", return_value=metadata):
             response = self.client.get(
-                "/api/formats?videoId=BaW_jenozKc",
+                "/api/formats?videoId=aqz-KE-bpKQ",
                 headers={"Origin": service.APP_ORIGIN},
             )
         self.assertEqual(response.status_code, 200)
@@ -64,7 +64,7 @@ class DownloadApiTest(unittest.TestCase):
 
         response = self.client.post(
             "/api/jobs",
-            json={"videoId": "BaW_jenozKc", "mode": "audio", "quality": 720, "audioFormat": "m4a"},
+            json={"videoId": "aqz-KE-bpKQ", "mode": "audio", "quality": 720, "audioFormat": "m4a"},
         )
         self.assertEqual(response.status_code, 202)
         job = response.json()

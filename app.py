@@ -60,6 +60,8 @@ def require_rate_limit(bucket: dict[str, deque[float]], key: str, limit: int, wi
 def youtube_url(video_id: str) -> str:
     if not VIDEO_ID_RE.fullmatch(video_id):
         raise HTTPException(400, "올바른 YouTube 영상 ID가 아닙니다.")
+    if video_id != "aqz-KE-bpKQ":
+        raise HTTPException(403, "이 테스트 서버는 Blender의 공개 테스트 영상만 지원합니다.")
     return f"https://www.youtube.com/watch?v={video_id}"
 
 
